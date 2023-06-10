@@ -1,0 +1,128 @@
+{%extends 'CARSProject/main.html'%}
+{% block content%}
+{%include 'CARSProject/stats.html'%}
+
+<br>
+<div class = "row">
+    <div class = "col">
+        <h5>CARSProjects:</h5>
+        <hr>
+        <br>
+        <div class ="row">
+            <div class = "col">
+                <div class = "card card-body">
+                    <form method="get">
+
+                        <button class ="btn btn-orimary" type = "submit" style = "background-color : rgb(12, 83, 149) ; color: white">Search</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class ="card card-body">
+            <a class = "btn btn-primary btn-sm btn-block" href="/create_project">Create New Project                
+            </a>
+            <table class="table">
+                <tr>
+                    <th></th>
+                    <th>Project Title</th>
+                    <th>division_head</th>
+                    <th>Initial Sanction Cost</th>
+                    <th>Final Cost</th>
+                    <th>Total Expenditure</th>
+                    <th>Project_ID</th>
+                    <th>Date of Start</th>
+                    <th>PDC(months)</th>
+                    <th>RSQR</th>
+                    <th>Nomination RSP</th>
+                    <th>Date of Complition</th>
+                    <th>Extended PDC</th>
+                    <th>No. of Publications</th>
+                    <th>no. of IPR Filed</th>
+                    <th>Trained Manpower</th>
+                    <th>Domain Lab</th>
+                    <th>Cluster *</th>
+                    <th>Scantion Year</th>
+                    <th>Current Status</th>
+                    <th>Date of Closure</th>
+                    <th>Title of Project</th>
+                    <th>Cost</th>
+                    <th>Porject  no./buildup</th>
+                    <th>Advance date</th>
+                    <th>Advace amount</th>
+                    <th>D.V. no./cheque</th>
+                    <th>Installment 1 </th>
+                    <th>Date</th>
+                    <th>Amount</th>
+                    <th>Cheque slip no.</th>
+                    <th>Installment 2</th>
+                    <th>Date</th>
+                    <th>Amount</th>
+                    <th>Installment 3</th>
+                    <th>Date</th>
+                    <th>Amount</th>
+                    <th>Cheque slip no.</th>
+                    <th>Installment 4</th>
+                    <th>Date</th>
+                    <th>Amount</th>
+                    <th>Cheque slip no.</th>
+                    <th>Total Amount Released</th>
+                    <th>Returned amount</th>
+                    <th>DD no. and Date of return of unutilized amount</th>
+                    <th>Total Utilized amount</th>
+                </tr>
+                {% for i in CARSlist %}
+                <tr>
+                    <td><a class = "btn btn-sm btn-info" href="{% url 'updateproject' i.project_id %}">Update</a></td>
+                    <td>{{i.Title_of_Project}}</td>
+                    <td>{{i.division_head}}</td>
+                    <td>{{i.initial_sanction_cost}}</td>
+                    <td>{{i.final_cost}}</td>
+                    <td>{{i.total_expenditure}}</td>
+                    <td>{{i.project_id}}</td>
+                    <td>{{i.date_of_start}}</td>
+                    <td>{{i.pdc}}</td>
+                    <td>{{i.rsqr}}</td>
+                    <td>{{i.nomination_rsp}}</td>
+                    <td>{{i.date_of_complition}}</td>
+                    <td>{{i.extended_pdc}}</td>
+                    <td>{{i.no_of_publications}}</td>
+                    <td>{{i.no_of_IPR_Filed}}</td>
+                    <td>{{i.trained_manpower}}</td>
+                    <td>{{i.domain_lab}}</td>
+                    <td>{{i.cluster}}</td>
+                    <td>{{i.scantion_year}}</td>
+                    <td>{{i.current_status}}</td>
+                    <td>{{i.date_of_closure}}</td>
+                    <td>{{i.cost_in_lakh}}</td>
+                    
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+    </div>
+</div>
+<br>
+
+    <div class ="card card-body">
+        <a class = "btn btn-primary btn-sm btn-block" href="/gsqr">GSQR</a>                
+        </a>
+
+    </div>
+    {% comment %} <div class = "col-md">
+        <h5>Payment</h5>
+        <hr>
+        <div class ="card card-body">
+            <a class = "btn btn-primary btn-sm btn-block" href="/admin">Payment</a>                
+            </a>
+            <table class="table">
+                <tr>
+4
+                    
+                </tr>
+            </table>
+        </div>
+
+    </div> {% endcomment %}
+</div>
+{% endblock%}

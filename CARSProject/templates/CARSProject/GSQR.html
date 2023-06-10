@@ -1,0 +1,47 @@
+{%extends 'CARSProject/main.html'%}
+{% block content%}
+{%include 'CARSProject/stats.html'%}
+<div class = "row">
+    <div class = "col">
+        <h5>CARSProjects:</h5>
+        <hr>
+        <br>
+        <div class ="row">
+            <div class = "col">
+                <div class = "card card-body">
+                    <form method="get">
+
+                        <button class ="btn btn-orimary" type = "submit" style = "background-color : rgb(12, 83, 149) ; color: white">Search</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class ="card card-body">
+            <a class = "btn btn-primary btn-sm btn-block" href="/admin">File New GSQR                
+            </a>
+            <table class="table">
+                <tr>
+                    <th></th>
+                    <th>Field 1</th>
+                    
+                    <th>Field 2</th>
+                    
+                    <th>Field 3</th>
+                    
+                    <th>Field 4</th>
+                </tr>
+                {% for GSQ in GSQRlist %}
+                <tr>
+                    <td></td>
+                    <td>{{GSQ.Feild_1}}</td>
+                    
+                    <td>{{GSQ.Feild_2}}</td>
+                    
+                    <td>{{GSQ.Feild_3}}</td>
+                    
+                    <td>{{GSQ.Feild_4}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+{% endblock%}

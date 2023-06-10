@@ -1,0 +1,92 @@
+<style>* {box-sizing: border-box}
+
+    /* Add padding to containers */
+    .container {
+      padding: 16px;
+    }
+    
+    /* Full-width input fields */
+    input[type=text], input[type=data_field] {
+      width: 100%;
+      padding: 15px;
+      margin: 5px 0 22px 0;
+      display: inline-block;
+      border: none;
+      background: #f1f1f1;
+    }
+    
+    input[type=text]:focus, input[type=password]:focus {
+      background-color: #ddd;
+      outline: none;
+    }
+    
+    /* Overwrite default styles of hr */
+    hr {
+      border: 1px solid #f1f1f1;
+      margin-bottom: 25px;
+    }
+    
+    /* Set a style for the submit/register button */
+    .registerbtn {
+      background-color: #04AA6D;
+      color: white;
+      padding: 16px 20px;
+      margin: 8px 0;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      opacity: 0.9;
+    }
+    
+    .registerbtn:hover {
+      opacity:1;
+    }
+    
+    /* Add a blue text color to links */
+    a {
+      color: dodgerblue;
+    }
+    
+    /* Set a grey background color and center the text of the "sign in" section */
+    .signin {
+      background-color: #f1f1f1;
+      text-align: center;
+    }</style>
+<form action="action_page.php">
+    <div class="container">
+      <h1>Project Intialization</h1>
+      <p>Please fill in this form to initialize a project.</p>
+      <hr>
+  
+      <label for="Project_ID"><b>Project_ID</b></label>
+      <input type="text" placeholder="Project ID (eg. 165)" name="Project ID" id="Project_id" required>
+  
+      <label for="Project Title"><b>Title_of_Project</b></label>
+      <input type="text" placeholder="example" name="project_title" id="project_title" required>
+  
+      <label for="division_head"><b>Dividion head</b></label>
+      <input type="text" placeholder="division_head" name="division_head" id="division_head" required>
+
+      <label for="division_head"><b>Buildup or Project ID</b></label>
+      <input type="text" placeholder="example" name="division_head" id="division_head" required>
+
+      <label for="division_head"><b>CARS Coordinator</b></label>
+      <input type="text" placeholder="please provide coordinator name" name="division_head" id="division_head" required>
+
+      <label for="division_head"><b>Total cost</b></label>
+      <input type="text" placeholder="total cost for the project" name="division_head" id="division_head" required>
+
+      <label for="division_head"><b>Inveted Reasearch Service Provider </b></label>
+      <input type="text" placeholder=" document will be uploaded here" name="division_head" id="division_head" required>
+      <label for="division_head"><b>CARS L1 Selected Institues </b></label>
+      <input type="text" placeholder=" name of institutes" name="division_head" id="division_head" required>
+      <hr>
+  
+      <!-- <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p> -->
+      <button type="submit" class="registerbtn">Initialize</button>
+    </div>
+  
+    <!-- <div class="container signin">
+      <p>Already have an account? <a href="#">Sign in</a>.</p>
+    </div>
+  </form> -->

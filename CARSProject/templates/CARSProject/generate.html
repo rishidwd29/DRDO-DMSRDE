@@ -1,0 +1,62 @@
+{%extends 'CARSProject/main.html'%}
+{% block content%}
+{%include 'CARSProject/stats.html'%}
+
+<br>
+<div class = "row">
+    <div class = "col">
+        <h5>Report Generation:</h5>
+        <hr>
+        <br>
+        <div class ="row">
+            <div class = "col">
+                <div class = "card card-body">
+                    <form method="get">
+
+                        <button class ="btn btn-orimary" type = "submit" style = "background-color : rgb(12, 83, 149) ; color: white">Statement of Case</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class ="row">
+            <div class = "col">
+                <div class = "card card-body">
+                    <form method="get">
+
+                        <button class ="btn btn-orimary" type = "submit" style = "background-color : rgb(12, 83, 149) ; color: white">Generate RSQR</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class ="card card-body">
+            <a class = "btn btn-primary btn-sm btn-block" href="/admin">Create New Project                
+            </a>
+            
+        </div>
+
+    </div>
+</div>
+<br>
+
+    <div class ="card card-body">
+        <a class = "btn btn-primary btn-sm btn-block" href="/gsqr">GSQR</a>                
+        </a>
+
+    </div>
+    {% comment %} <div class = "col-md">
+        <h5>Payment</h5>
+        <hr>
+        <div class ="card card-body">
+            <a class = "btn btn-primary btn-sm btn-block" href="/admin">Payment</a>                
+            </a>
+            <table class="table">
+                <tr>
+4
+                    
+                </tr>
+            </table>
+        </div>
+
+    </div> {% endcomment %}
+</div>
+{% endblock%}
