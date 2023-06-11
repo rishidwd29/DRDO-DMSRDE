@@ -1,3 +1,6 @@
+{%extends 'CARSProject/main.html'%}
+{% block content%}
+{%include 'CARSProject/stats.html'%}
 <style>* {box-sizing: border-box}
 
     /* Add padding to containers */
@@ -52,34 +55,34 @@
       background-color: #f1f1f1;
       text-align: center;
     }</style>
-<form action="action_page.php">
+<form action="" method = "POST">{%csrf_token%}
     <div class="container">
       <h1>Project Intialization</h1>
       <p>Please fill in this form to initialize a project.</p>
       <hr>
   
       <label for="Project_ID"><b>Project_ID</b></label>
-      <input type="text" placeholder="Project ID (eg. 165)" name="Project ID" id="Project_id" required>
+      <input type="text" class= "field" placeholder="Project ID (eg. 165)" name="project id"  >
   
       <label for="Project Title"><b>Title_of_Project</b></label>
-      <input type="text" placeholder="example" name="project_title" id="project_title" required>
+      <input type="text" class ="field" placeholder="title of the project" name="project title" >
   
       <label for="division_head"><b>Dividion head</b></label>
-      <input type="text" placeholder="division_head" name="division_head" id="division_head" required>
+      <input type="text" class = "field" placeholder="divison_head" name="division head" >
 
       <label for="division_head"><b>Buildup or Project ID</b></label>
-      <input type="text" placeholder="example" name="division_head" id="division_head" required>
+      <input type="text" class = "field" placeholder="Buildup or Project ID" name="build up projectid"  >
 
       <label for="division_head"><b>CARS Coordinator</b></label>
-      <input type="text" placeholder="please provide coordinator name" name="division_head" id="division_head" required>
+      <input type="text" class ="field" placeholder="please provide coordinator name" name="CARS coordinator" >
 
       <label for="division_head"><b>Total cost</b></label>
-      <input type="text" placeholder="total cost for the project" name="division_head" id="division_head" required>
+      <input type="text" class = "field" placeholder="total cost for the project" name="total cost"  >
 
       <label for="division_head"><b>Inveted Reasearch Service Provider </b></label>
-      <input type="text" placeholder=" document will be uploaded here" name="division_head" id="division_head" required>
+      <input type="text" class = "field" placeholder=" document will be uploaded here" name="irsp" >
       <label for="division_head"><b>CARS L1 Selected Institues </b></label>
-      <input type="text" placeholder=" name of institutes" name="division_head" id="division_head" required>
+      <input type="text" class ="field" placeholder=" name of institutes" name="carsl1selected" >
       <hr>
   
       <!-- <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p> -->
@@ -90,3 +93,4 @@
       <p>Already have an account? <a href="#">Sign in</a>.</p>
     </div>
   </form> -->
+  {% endblock %}

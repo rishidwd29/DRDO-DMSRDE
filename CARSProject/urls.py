@@ -18,7 +18,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('CARSProject/', views.landing, name = 'initialize'),
+    path('', views.landing, name = 'initialize'),
     path('project/<str:pk>/', views.projects, name = 'project'), 
     path('dashboard/', views.dashboard, name='dashboard'),
     path('gsqr/', views.GSQR, name='CARS'),

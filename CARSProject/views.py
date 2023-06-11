@@ -12,6 +12,21 @@ TP = all_projects.count()
 form = projectForm()
 context = {'CARSlist':all_projects, 'total_projects':TP,'form': form}
 def landing(request):
+    if request.method == 'POST':
+        projectid = request.POST['project id']
+        projecttitle = request.POST['project title']
+        divisionhead = request.POST['division head']
+        buildupprojectid= request.POST['build up projectid']
+        CARScoordinator = request.POST['CARS coordinator']
+        totalcost = request.POST['total cost']
+        irsp = request.POST['irsp']
+        carsl1selected = request.POST['carsl1selected']
+        
+        addproject = project(project_id = projectid, Title_of_Project = projecttitle, 
+        division_head = divisionhead, project_no_buildup = buildupprojectid)
+        addproject.save()
+        redirect('/')
+        
     return render(request, 'CARSProject/landing.html', context)
 
 def admin(request):
