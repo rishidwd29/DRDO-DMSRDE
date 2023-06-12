@@ -21,11 +21,10 @@ def landing(request):
         totalcost = request.POST['total cost']
         irsp = request.POST['irsp']
         carsl1selected = request.POST['carsl1selected']
-        
         addproject = project(project_id = projectid, Title_of_Project = projecttitle, 
-        division_head = divisionhead, project_no_buildup = buildupprojectid)
+            division_head = divisionhead, project_no_buildup = buildupprojectid, total_cost = totalcost, CARScoordinator = CARScoordinator,)
         addproject.save()
-        redirect('/')
+   
         
     return render(request, 'CARSProject/landing.html', context)
 
@@ -33,9 +32,20 @@ def admin(request):
     return redirect("/admin")
 def dashboard(request):
     return render(request, 'CARSProject/Dashboard.html', context )
-def GSQR(request):
-    gsqrlist = gsqr.objects.all()
-    return render(request, 'CARSProject/GSQR.html', {'GSQRlist':gsqrlist})
+def rsqrcommity(request):
+    if request.method == 'POST':
+        objective = request.POST['objective']
+        justification = request.POST['justification']
+        methodology = request.POST['methodology']
+        milestone = request.POST['milestone']
+        project_investigator = request.POST['project investigator']
+        total_cost = request.POST['total cost']
+        duration = request.POST['duration']
+        deliverables = request.POST['deliverables']
+        addrsqr= rsqr()
+        
+    return render (request, 'CARSProject/rsqrcommity.html', context)
+    
 def generate(request):
     return render(  request,'CARSProject/generate.html', context)
 

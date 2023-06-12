@@ -19,9 +19,10 @@ from . import views
 
 urlpatterns = [
     path('', views.landing, name = 'initialize'),
+    path('rsqrcommity', views.rsqrcommity, name ='rsqrcommity'),
     path('project/<str:pk>/', views.projects, name = 'project'), 
     path('dashboard/', views.dashboard, name='dashboard'),
-    path('gsqr/', views.GSQR, name='CARS'),
+    
     path('generate/', views.generate, name = 'generate'),
     path('create_project/', views.CreateProject, name = "create_project"),
     path('update_project/<str:pk>/', views.updateproject, name = "updateproject")

@@ -9,7 +9,7 @@ class project(models.Model):
     project_no_buildup = models.CharField(max_length= 400,null = True ,blank=True)
     carscoordinator = models.CharField(max_length = 100, null = True, blank=True)
     total_cost = models.FloatField(default=0,null = True, blank=True)
-    irsp = models.CharField(max_length=500,null = True, blank=True)
+    irsp = models.FileField(null=True, blank = True)
     carsl1selectedinstitutes = models.CharField(max_length = 500, null= True, blank=True)
     initial_sanction_cost = models.FloatField(default=0,null = True, blank=True)
     date_of_start = models.DateField(auto_now_add = True,null = True, blank=True)
@@ -56,8 +56,12 @@ def __str__(self):
     return self.Project_ID
 
 
-class gsqr(models.Model):
-    Feild_1 = models.CharField(max_length=300)
-    Feild_2 = models.CharField(max_length=300)
-    Feild_3 = models.CharField(max_length=300)
-    Feild_4 = models.CharField(max_length=300)
+class rsqr(models.Model):
+    objective = models.CharField(max_length = 225)
+    justification = models.CharField(max_length =500)
+    plan_of_work = models.CharField(max_length = 600)
+    milestones = models.CharField(max_length= 600)
+    project_investigator = models.CharField(max_length = 500)
+    duration = models.CharField(max_length = 500)
+def __obj__(self):
+    return self.objective
