@@ -10,7 +10,8 @@ from .forms import *
 all_projects  = project.objects.all() # type: ignore
 TP = all_projects.count()
 form = projectForm()
-context = {'CARSlist':all_projects, 'total_projects':TP,'form': form}
+formsub = pdfsubmit()
+context = {'CARSlist':all_projects, 'total_projects':TP,'form': form, 'formsub': formsub}
 def landing(request):
     if request.method == 'POST':
         projectid = request.POST['project id']
@@ -19,12 +20,15 @@ def landing(request):
         buildupprojectid= request.POST['build up projectid']
         CARScoordinator = request.POST['CARS coordinator']
         totalcost = request.POST['total cost']
-        irsp = request.POST['irsp']
+        Irsp = request.POST['file']
         carsl1selected = request.POST['carsl1selected']
         addproject = project(project_id = projectid, Title_of_Project = projecttitle, 
-            division_head = divisionhead, project_no_buildup = buildupprojectid, total_cost = totalcost, CARScoordinator = CARScoordinator,)
+            division_head = divisionhead, project_no_buildup = buildupprojectid, total_cost = totalcost,irsp =Irsp , carscoordinator = CARScoordinator,)
         addproject.save()
-   
+    if request.method == "POST":
+        pdform = pdfsubmit(request.POST, request.FILES)
+        if pdform.is_valid():
+            pdform.save()
         
     return render(request, 'CARSProject/landing.html', context)
 

@@ -5,3 +5,8 @@ class projectForm(ModelForm):
     class Meta:
         model = project
         fields = '__all__'
+
+class pdfsubmit(ModelForm):
+    class Meta:
+        model = project
+        fields = ['irsp']
