@@ -19,8 +19,9 @@ from . import views
 
 urlpatterns = [
     path('', views.landing, name = 'initialize'),
-    path('rsqrcommity', views.rsqrcommity, name ='rsqrcommity'),
+    path('irspcommity', views.irspcommity, name ='irspcommity'),
     path('project/<str:pk>/', views.projects, name = 'project'), 
+    path('projectpdf/', views.projectpdf, name = 'projectpdf'),
     path('dashboard/', views.dashboard, name='dashboard'),
     
     path('generate/', views.generate, name = 'generate'),

@@ -9,7 +9,7 @@
     }
     
     /* Full-width input fields */
-    input[type=text], input[type=data_field] {
+    input[type=text], input[type=data_field], input[type= number] {
       width: 100%;
       padding: 15px;
       margin: 5px 0 22px 0;
@@ -18,7 +18,7 @@
       background: #f1f1f1;
     }
     
-    input[type=text]:focus, input[type=password]:focus {
+    input[type=number]:focus {
       background-color: #ddd;
       outline: none;
     }
@@ -77,25 +77,30 @@
       <label for="division_head"><b>CARS Coordinator</b></label>
       <input type="text" class ="field" placeholder="please provide coordinator name" name="CARS coordinator" >
       
-      <label for="division_head"><b>Total cost</b></label>
-      <input type="text" class = "field" placeholder="total cost for the project" name="total cost"  >
+      <label for="total_cost"><b>Total cost</b></label>
+      <input type="number" class = "field" placeholder="total cost for the project" name="total cost"  >
       
       <label for="division_head"><b>CARS L1 Selected Institues </b></label>
       <input type="text" class ="field" placeholder=" name of institutes" name="carsl1selected" >
       <label for="division_head"><b>Inveted Reasearch Service Provider </b></label>
       <br>
       {{formsub.as_p}}
-      <!-- <br>
-        <label for="myfile">Select a file:</label>
-      <input type="file" id="myfile" name="file"><br>
-      <input type="submit"><br> -->
       <hr>
-  
-      <!-- <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p> -->
-      <button type="submit" class="registerbtn">Initialize</button>
+      
+      <button type="submit" onclick = "location.href ='/irsqcommity'" class="registerbtn">initialize</button>
     </div>
-  
-    <div class ="row">
+    <!-- <div class ="card card-body">
+      <a class = "btn btn-primary btn-sm btn-block" href="/irspcommity">Next page</a>                
+    </a>
+    
+  </div> -->
+  <!-- <br>
+    <label for="myfile">Select a file:</label>
+    <input type="file" id="myfile" name="file"><br>
+    <input type="submit"><br> -->
+    <!-- <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p> -->
+    
+    <!-- <div class ="row">
             <div class = "col">
                 <div class = "card card-body">
                     <form method="get">
@@ -104,9 +109,9 @@
                     </form>
                 </div>
             </div>
-        </div>
+        </div> -->
     <!-- <div class="container signin">
       <p>Already have an account? <a href="#">Sign in</a>.</p>
-    </div>
-  </form> -->
+    </div> -->
+  </form>
   {% endblock %}

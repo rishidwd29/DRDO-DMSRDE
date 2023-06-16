@@ -8,7 +8,7 @@ class project(models.Model):
     division_head = models.CharField(max_length = 600, null = True, blank = True)
     project_no_buildup = models.CharField(max_length= 400,null = True ,blank=True)
     carscoordinator = models.CharField(max_length = 100, null = True, blank=True)
-    total_cost = models.FloatField(null = True, blank=True)
+    total_cost = models.FloatField(default= 0,blank = True)
     irsp = models.FileField(null=True, blank = True)
     carsl1selectedinstitutes = models.CharField(max_length = 500, null= True, blank=True)
     initial_sanction_cost = models.FloatField(default=0,null = True, blank=True)
@@ -47,6 +47,8 @@ class project(models.Model):
     unutilized_amount = models.FloatField(null=True, blank=True)
     total_utilized_amount = models.FloatField(null = True, blank=True)
     
+    
+    
 
 #      Pojects = models.ForeignKey(projects, on_delete= models.CASCADE)
 #     Project_ID = models.FloatField(models.ForeignKey(projects, on_delete=models.CASCADE))
@@ -55,13 +57,15 @@ class project(models.Model):
 def __str__(self):
     return self.Project_ID
 
-
-class rsqr(models.Model):
-    objective = models.CharField(max_length = 225)
-    justification = models.CharField(max_length =500)
-    plan_of_work = models.CharField(max_length = 600)
-    milestones = models.CharField(max_length= 600)
-    project_investigator = models.CharField(max_length = 500)
-    duration = models.CharField(max_length = 500)
-def __obj__(self):
-    return self.objective
+class irsp(models.Model):
+    objective = models.CharField(max_length = 225, blank = True, null=True)
+    justification = models.CharField(max_length =500, blank = True, null=True)
+    plan_of_work = models.CharField(max_length = 600, blank = True, null=True)
+    milestones = models.CharField(max_length= 600, blank = True, null=True)
+    project_investigator = models.CharField(max_length = 500, blank = True, null=True)
+    duration = models.CharField(max_length = 500, blank = True, null=True)
+    chairman = models.CharField(max_length = 100, blank = True, null=True)
+    member_1= models.CharField(max_length = 100, blank = True, null=True)
+    member_2= models.CharField(max_length = 100, blank = True, null=True)
+    member_3= models.CharField(max_length = 100, blank = True, null=True)
+    member_secretory = models.CharField(max_length =100, blank = True, null=True)
