@@ -8,32 +8,33 @@ from django.contrib import messages
 from .models import *
 from .forms import *
 import io
-from reportlab.pdfgen import canvas
-from reportlab.lib.units import inch
-from reportlab.lib.pagesizes import letter
+# from reportlab.pdfgen import canvas
+# from reportlab.lib.units import inch
+# from reportlab.lib.pagesizes import letter
 
 
 def projectpdf(request):
     # create a byte stream buffer
-    buf = io.BytesIO()
-    # create canvas
-    c = canvas.Canvas(buf,pagesize = letter, bottomup=0)
-    # create a text object
-    textob = c.beginText()
-    textob.setTextOrigin(inch,inch)
-    textob.setFont("Helvetica", 14)
-    lines = [
-        "this is line one"
-    ]
-    for line in lines:
-        textob.textLine(line)
-    # Finish up
-    c.drawText(textob)
-    c.showPage()
-    c.save()
-    buf.seek(0)
+    # buf = io.BytesIO()
+    # # create canvas
+    # c = canvas.Canvas(buf,pagesize = letter, bottomup=0)
+    # # create a text object
+    # textob = c.beginText()
+    # textob.setTextOrigin(inch,inch)
+    # textob.setFont("Helvetica", 14)
+    # lines = [
+    #     "this is line one"
+    # ]
+    # for line in lines:
+    #     textob.textLine(line)
+    # # Finish up
+    # c.drawText(textob)
+    # c.showPage()
+    # c.save()
+    # buf.seek(0)
     
-    return FileResponse(buf, as_attachment=True, filename="test.pdf")
+    # return FileResponse(buf, as_attachment=True, filename="test.pdf")
+    return HttpResponse("print pdf")
 
 all_projects  = project.objects.all() # type: ignore
 TP = all_projects.count()
