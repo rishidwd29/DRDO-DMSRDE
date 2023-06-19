@@ -23,7 +23,7 @@ urlpatterns = [
     path('project/<str:pk>/', views.projects, name = 'project'), 
     path('projectpdf/', views.projectpdf, name = 'projectpdf'),
     path('dashboard/', views.dashboard, name='dashboard'),
-    path('updates/<project_id>')
+    path('updates/<project_id>', views.update, name = 'update'),
     
     path('generate/', views.generate, name = 'generate'),
     path('create_project/', views.CreateProject, name = "create_project"),

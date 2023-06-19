@@ -13,6 +13,9 @@ import io
 # from reportlab.lib.pagesizes import letter
 
 
+def update(request):
+    
+
 def projectpdf(request):
     # create a byte stream buffer
     # buf = io.BytesIO()
