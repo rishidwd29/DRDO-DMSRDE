@@ -47,17 +47,7 @@ class project(models.Model):
     unutilized_amount = models.FloatField(null=True, blank=True)
     total_utilized_amount = models.FloatField(null = True, blank=True)
     
-    
-    
-
-#      Pojects = models.ForeignKey(projects, on_delete= models.CASCADE)
-#     Project_ID = models.FloatField(models.ForeignKey(projects, on_delete=models.CASCADE))
-#     Installments = models.PositiveSmallIntegerField(default=0)
-#     Installment_sum = models.PositiveBigIntegerField(blank = False)
-def __str__(self):
-    return self.Project_ID
-
-class irsp(models.Model):
+    rsqrdoc = models.FileField(null = True, blank = True)
     objective = models.CharField(max_length = 225, blank = True, null=True)
     justification = models.CharField(max_length =500, blank = True, null=True)
     plan_of_work = models.CharField(max_length = 600, blank = True, null=True)
@@ -69,3 +59,14 @@ class irsp(models.Model):
     member_2= models.CharField(max_length = 100, blank = True, null=True)
     member_3= models.CharField(max_length = 100, blank = True, null=True)
     member_secretory = models.CharField(max_length =100, blank = True, null=True)
+    minsheet = models.FileField(blank = True, null=True)
+    
+
+#      Pojects = models.ForeignKey(projects, on_delete= models.CASCADE)
+#     Project_ID = models.FloatField(models.ForeignKey(projects, on_delete=models.CASCADE))
+#     Installments = models.PositiveSmallIntegerField(default=0)
+#     Installment_sum = models.PositiveBigIntegerField(blank = False)
+def __str__(self):
+    return self.Project_ID
+
+

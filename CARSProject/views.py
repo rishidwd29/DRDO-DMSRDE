@@ -8,42 +8,42 @@ from django.contrib import messages
 from .models import *
 from .forms import *
 import io
-# from reportlab.pdfgen import canvas
-# from reportlab.lib.units import inch
-# from reportlab.lib.pagesizes import letter
+from reportlab.pdfgen import canvas
+from reportlab.lib.units import inch
+from reportlab.lib.pagesizes import letter
 
 
 def update(request):
-    
+    return HttpResponse("update")
 
 def projectpdf(request):
     # create a byte stream buffer
-    # buf = io.BytesIO()
-    # # create canvas
-    # c = canvas.Canvas(buf,pagesize = letter, bottomup=0)
-    # # create a text object
-    # textob = c.beginText()
-    # textob.setTextOrigin(inch,inch)
-    # textob.setFont("Helvetica", 14)
-    # lines = [
-    #     "this is line one"
-    # ]
-    # for line in lines:
-    #     textob.textLine(line)
-    # # Finish up
-    # c.drawText(textob)
-    # c.showPage()
-    # c.save()
-    # buf.seek(0)
+    buf = io.BytesIO()
+    # create canvas
+    c = canvas.Canvas(buf,pagesize = letter, bottomup=0)
+    # create a text object
+    textob = c.beginText()
+    textob.setTextOrigin(inch,inch)
+    textob.setFont("Helvetica", 14)
+    lines = [
+        "this is line one"
+    ]
+    for line in lines:
+        textob.textLine(line)
+    # Finish up
+    c.drawText(textob)
+    c.showPage()
+    c.save()
+    buf.seek(0)
     
-    # return FileResponse(buf, as_attachment=True, filename="test.pdf")
+    return FileResponse(buf, as_attachment=True, filename="test.pdf")
     return HttpResponse("print pdf")
 
 all_projects  = project.objects.all() # type: ignore
 TP = all_projects.count()
 form = projectForm()
-formsub = pdfsubmit()
-context = {'CARSlist':all_projects, 'total_projects':TP,'form': form, 'formsub': formsub}
+
+context = {'CARSlist':all_projects, 'total_projects':TP,'form': form, 'formsub': pdfsubmit()}
 def landing(request):
     if request.method == 'POST':
         projectid = request.POST['project id']
@@ -70,6 +70,15 @@ def admin(request):
 def dashboard(request):
     return render(request, 'CARSProject/Dashboard.html', context )
 def irspcommity(request):
+    if request.method == "POST":
+        rsqrform = rsqrpdf(request.POST, request.FILES)
+        if rsqrform.is_valid():
+            rsqrform.save()
+    if request.method == "POST":
+        min_pdf = minpdf(request.POST, request.FILES)
+        if min_pdf.is_valid():
+            min_pdf.save()
+    
     if request.method == 'POST':
         objective = request.POST['objective']
         justification = request.POST['justification']
@@ -87,15 +96,15 @@ def irspcommity(request):
         Membersec = request.POST['members secratory']
 
         
-        addrsqr= irsp(objective = objective, justification= justification,
+        addrsqr= project(objective = objective, justification= justification,
                       plan_of_work = methodology,milestones= Milestone,
                       project_investigator = project_investigator,
                       duration = duration,chairman=Chairman, member_1 = member1,
                       member_2 = member2, member_3= member3, member_secretory= Membersec)
         addrsqr.save()
-        return redirect('/generate')
         
-    return render (request, 'CARSProject/irspcommity.html', context)
+        
+    return render (request, 'CARSProject/irspcommity.html', {'total_projects':TP,'form': form, 'formsub': pdfsubmit(),'rsqrpdf': rsqrpdf(), 'min_pdf':minpdf()})
     
 def generate(request):
     return render(  request,'CARSProject/generate.html', context)
