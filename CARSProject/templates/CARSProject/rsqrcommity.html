@@ -1,0 +1,13 @@
+{%extends 'CARSProject/main.html'%}
+{% load static %}
+{% block content %}
+<form action="" method = "POST">
+    {% csrf_token %}
+    
+
+        {{rsqrform.as_p}}
+        
+    
+    <input type="submit" name="submit">
+</form>
+{% endblock %}

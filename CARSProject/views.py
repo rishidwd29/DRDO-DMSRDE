@@ -12,70 +12,29 @@ from reportlab.pdfgen import canvas
 from reportlab.lib.units import inch
 from reportlab.lib.pagesizes import letter
 
-
-def update(request):
-    return HttpResponse("update")
-
-def projectpdf(request):
-    # create a byte stream buffer
-    buf = io.BytesIO()
-    # create canvas
-    c = canvas.Canvas(buf,pagesize = letter, bottomup=0)
-    # create a text object
-    textob = c.beginText()
-    textob.setTextOrigin(inch,inch)
-    textob.setFont("Helvetica", 14)
-    lines = [
-        "this is line one"
-    ]
-    for line in lines:
-        textob.textLine(line)
-    # Finish up
-    c.drawText(textob)
-    c.showPage()
-    c.save()
-    buf.seek(0)
-    
-    return FileResponse(buf, as_attachment=True, filename="test.pdf")
-    
-
 all_projects  = project.objects.all() # type: ignore
 TP = all_projects.count()
 form = projectForm()
 
 context = {'CARSlist':all_projects, 'total_projects':TP,'form': form, 'formsub': pdfsubmit()}
-def landing(request):
-    cid = 0
-    if request.method == 'POST':
-        projectid = request.POST['project id']
-        cid = int(projectid)
-        projecttitle = request.POST['project title']
-        divisionhead = request.POST['division head']
-        buildupprojectid= request.POST['build up projectid']
-        CARScoordinator = request.POST['CARS coordinator']
-        totalcost = request.POST['total cost']
-        
-        carsl1selected = request.POST['carsl1selected']
-        addproject = project(project_id = projectid, Title_of_Project = projecttitle, 
-            division_head = divisionhead, project_no_buildup = buildupprojectid, 
-            total_cost = totalcost,carscoordinator = CARScoordinator,carsl1selectedinstitutes = carsl1selected )
-        addproject.save()
-    if request.method == "POST":
-        update = project.objects.get(project_id = cid)
-        pdform = pdfsubmit(instance=update,)
-        if request.method == "POST":
-            pdform = pdfsubmit(request.POST, request.FILES,instance= update)
-            if pdform.is_valid():
-                pdform.save()
-            
-        
-    return render(request, 'CARSProject/landing.html', context)
 
-def admin(request):
-    return redirect("/admin")
-def dashboard(request):
-    return render(request, 'CARSProject/Dashboard.html', context )
-def rsqrcommity(request,):
+def process(request):
+    cid = 0 
+    if request.method == "POST":
+        currentid = request.POST['projectid']
+        cid = int(currentid)
+        print (cid)
+        
+        
+    return render(request, 'CARSProject/process.html',{'total_projects': TP, 'currentid':cid})
+def rsqrcommity(request,pk):
+    update = project.objects.get(project_id=pk)
+    rsqrform = rsqrcommityform(instance=update)
+    if request.method == 'POST':
+        rsqrform = rsqrcommityform(request.POST, instance=update)
+        if rsqrform.is_valid():
+                    rsqrform.save()
+                    messages.success(request, 'Project Created Successfully')
         
     # if request.method == "POST":
     #     rsqrform = rsqrpdf(request.POST, request.FILES)
@@ -111,7 +70,62 @@ def rsqrcommity(request,):
     #                   member_2 = member2, member_3= member3, member_secretory= Membersec)
     #     addrsqr.save()
     
-    return render (request, 'CARSProject/irspcommity.html', {'total_projects':TP,})
+    return render (request, 'CARSProject/rsqrcommity.html', {'total_projects':TP,'rsqrform': rsqrform})
+
+def projectpdf(request):
+    # create a byte stream buffer
+    buf = io.BytesIO()
+    # create canvas
+    c = canvas.Canvas(buf,pagesize = letter, bottomup=0)
+    # create a text object
+    textob = c.beginText()
+    textob.setTextOrigin(inch,inch)
+    textob.setFont("Helvetica", 14)
+    lines = [
+        "this is line one"
+    ]
+    for line in lines:
+        textob.textLine(line)
+    # Finish up
+    c.drawText(textob)
+    c.showPage()
+    c.save()
+    buf.seek(0)
+    
+    return FileResponse(buf, as_attachment=True, filename="test.pdf")
+    
+
+def landing(request):
+    cid = 0
+    if request.method == 'POST':
+        projectid = request.POST['project id']
+        cid =projectid
+        projecttitle = request.POST['project title']
+        divisionhead = request.POST['division head']
+        buildupprojectid= request.POST['build up projectid']
+        CARScoordinator = request.POST['CARS coordinator']
+        totalcost = request.POST['total cost']
+        
+        carsl1selected = request.POST['carsl1selected']
+        addproject = project(project_id = projectid, Title_of_Project = projecttitle, 
+            division_head = divisionhead, project_no_buildup = buildupprojectid, 
+            total_cost = totalcost,carscoordinator = CARScoordinator,carsl1selectedinstitutes = carsl1selected )
+        addproject.save()
+    if request.method == "POST":
+        update = project.objects.get(project_id = cid)
+        pdform = pdfsubmit(instance=update,)
+        if request.method == "POST":
+            pdform = pdfsubmit(request.POST, request.FILES,instance= update)
+            if pdform.is_valid():
+                pdform.save()
+            
+        
+    return render(request, 'CARSProject/landing.html', context)
+
+def admin(request):
+    return redirect("/admin")
+def dashboard(request):
+    return render(request, 'CARSProject/Dashboard.html', context )
     
 def generate(request):
     return render(  request,'CARSProject/generate.html', context)

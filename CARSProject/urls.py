@@ -19,11 +19,12 @@ from . import views
 
 urlpatterns = [
     path('', views.landing, name = 'initialize'),
-    # path('irspcommity', views.irspcommity, name ='irspcommity'),
+    # path('irspcommity', views.irspcommity, name ='irspcommity'),444
     path('project/<str:pk>/', views.projects, name = 'project'), 
     path('projectpdf/', views.projectpdf, name = 'projectpdf'),
     path('dashboard/', views.dashboard, name='dashboard'),
-    path('rsqrcommity/<str:pk>', views.rsqrcommity, name = 'rsqrupdate'),
+    path('process/', views.process, name = 'process'),
+    path('rsqrcommity/<str:pk>', views.rsqrcommity, name = 'rsqrcommity'),
     
     path('generate/', views.generate, name = 'generate'),
     path('create_project/', views.CreateProject, name = "create_project"),

@@ -1,0 +1,10 @@
+{%extends 'CARSProject/main.html'%}
+{% block content%}
+{%include 'CARSProject/stats.html'%}
+<form action="" method = "POST">
+    {%csrf_token%}
+    <label for="division_head"><b>Project ID</b></label>
+    <input type="number" class = "form-control" placeholder="Enter Project ID" name="projectid"><br><br>
+    <a class = "btn btn-primary" href="{% url 'rsqrcommity' currentid%}">RQSQR and Commity Details</a>
+</form>
+    {% endblock %}
