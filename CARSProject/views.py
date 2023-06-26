@@ -37,7 +37,7 @@ def projectpdf(request):
     buf.seek(0)
     
     return FileResponse(buf, as_attachment=True, filename="test.pdf")
-    return HttpResponse("print pdf")
+    
 
 all_projects  = project.objects.all() # type: ignore
 TP = all_projects.count()
@@ -45,8 +45,10 @@ form = projectForm()
 
 context = {'CARSlist':all_projects, 'total_projects':TP,'form': form, 'formsub': pdfsubmit()}
 def landing(request):
+    cid = 0
     if request.method == 'POST':
         projectid = request.POST['project id']
+        cid = int(projectid)
         projecttitle = request.POST['project title']
         divisionhead = request.POST['division head']
         buildupprojectid= request.POST['build up projectid']
@@ -59,9 +61,13 @@ def landing(request):
             total_cost = totalcost,carscoordinator = CARScoordinator,carsl1selectedinstitutes = carsl1selected )
         addproject.save()
     if request.method == "POST":
-        pdform = pdfsubmit(request.POST, request.FILES)
-        if pdform.is_valid():
-            pdform.save()
+        update = project.objects.get(project_id = cid)
+        pdform = pdfsubmit(instance=update,)
+        if request.method == "POST":
+            pdform = pdfsubmit(request.POST, request.FILES,instance= update)
+            if pdform.is_valid():
+                pdform.save()
+            
         
     return render(request, 'CARSProject/landing.html', context)
 
@@ -69,42 +75,43 @@ def admin(request):
     return redirect("/admin")
 def dashboard(request):
     return render(request, 'CARSProject/Dashboard.html', context )
-def irspcommity(request):
-    if request.method == "POST":
-        rsqrform = rsqrpdf(request.POST, request.FILES)
-        if rsqrform.is_valid():
-            rsqrform.save()
-    if request.method == "POST":
-        min_pdf = minpdf(request.POST, request.FILES)
-        if min_pdf.is_valid():
-            min_pdf.save()
+def rsqrcommity(request,):
+        
+    # if request.method == "POST":
+    #     rsqrform = rsqrpdf(request.POST, request.FILES)
+    #     if rsqrform.is_valid():
+    #         rsqrform.save()
+    # if request.method == "POST":
+    #     min_pdf = minpdf(request.POST, request.FILES)
+    #     if min_pdf.is_valid():
+    #         min_pdf.save()
     
-    if request.method == 'POST':
-        objective = request.POST['objective']
-        justification = request.POST['justification']
-        methodology = request.POST['methodology']
-        Milestone = request.POST['milestone']
-        project_investigator = request.POST['project investigator']
-        # total_cost = request.POST['total cost']
-        duration = request.POST['duration']
-        deliverables = request.POST['deliverables']
+    # if request.method == 'POST':
+    #     objective = request.POST['objective']
+    #     justification = request.POST['justification']
+    #     methodology = request.POST['methodology']
+    #     Milestone = request.POST['milestone']
+    
+    #     project_investigator = request.POST['project investigator']
+    #     # total_cost = request.POST['total cost']
+    #     duration = request.POST['duration']
+    #     deliverables = request.POST['deliverables']
 
-        Chairman = request.POST['chairman']
-        member1 = request.POST['member1']
-        member2 = request.POST['member2']
-        member3 = request.POST['member3']
-        Membersec = request.POST['members secratory']
+    #     Chairman = request.POST['chairman']
+    #     member1 = request.POST['member1']
+    #     member2 = request.POST['member2']
+    #     member3 = request.POST['member3']
+    #     Membersec = request.POST['members secratory']
 
         
-        addrsqr= project(objective = objective, justification= justification,
-                      plan_of_work = methodology,milestones= Milestone,
-                      project_investigator = project_investigator,
-                      duration = duration,chairman=Chairman, member_1 = member1,
-                      member_2 = member2, member_3= member3, member_secretory= Membersec)
-        addrsqr.save()
-        
-        
-    return render (request, 'CARSProject/irspcommity.html', {'total_projects':TP,'form': form, 'formsub': pdfsubmit(),'rsqrpdf': rsqrpdf(), 'min_pdf':minpdf()})
+    #     addrsqr= project(objective = objective, justification= justification,
+    #                   plan_of_work = methodology,milestones= Milestone,
+    #                   project_investigator = project_investigator,
+    #                   duration = duration,chairman=Chairman, member_1 = member1,
+    #                   member_2 = member2, member_3= member3, member_secretory= Membersec)
+    #     addrsqr.save()
+    
+    return render (request, 'CARSProject/irspcommity.html', {'total_projects':TP,})
     
 def generate(request):
     return render(  request,'CARSProject/generate.html', context)

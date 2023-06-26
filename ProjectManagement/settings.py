@@ -12,6 +12,11 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 import os
 from pathlib import Path
+from django.forms.renderers import TemplatesSetting
+
+# class CustomFormRenderer(TemplatesSetting):
+#     form_template_name = "customform.html"
+# FORM_RENDERER ="project.settings.CustomFormRenderer"
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -39,6 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'CARSProject.apps.CarsprojectConfig',
+    'django.forms',
+    # 'django_filter',
 ]
 
 MIDDLEWARE = [

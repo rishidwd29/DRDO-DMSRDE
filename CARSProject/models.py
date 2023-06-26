@@ -53,7 +53,7 @@ class project(models.Model):
     plan_of_work = models.CharField(max_length = 600, blank = True, null=True)
     milestones = models.CharField(max_length= 600, blank = True, null=True)
     project_investigator = models.CharField(max_length = 500, blank = True, null=True)
-    duration = models.CharField(max_length = 500, blank = True, null=True)
+    duration = models.DateField(blank = True, null=True)
     chairman = models.CharField(max_length = 100, blank = True, null=True)
     member_1= models.CharField(max_length = 100, blank = True, null=True)
     member_2= models.CharField(max_length = 100, blank = True, null=True)
