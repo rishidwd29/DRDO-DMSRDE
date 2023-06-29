@@ -8,7 +8,7 @@ class project(models.Model):
     division_head = models.CharField(max_length = 600, null = True, blank = True)
     project_no_buildup = models.CharField(max_length= 400,null = True ,blank=True)
     carscoordinator = models.CharField(max_length = 100, null = True, blank=True)
-    total_cost = models.FloatField(default= 0,blank = True)
+    Estimate_Cost = models.FloatField(default= 0,blank = True)
     irsp = models.FileField(null=True, blank = True)
     carsl1selectedinstitutes = models.CharField(max_length = 500, null= True, blank=True)
     initial_sanction_cost = models.FloatField(default=0,null = True, blank=True)
@@ -61,6 +61,9 @@ class project(models.Model):
     member_secretory = models.CharField(max_length =100, blank = True, null=True)
     minsheet = models.FileField(blank = True, null=True)
     
+    
+    annexure_1 = models.FileField(blank = True, null = True)
+    annexure_2 = models.FileField(blank = True, null = True)
 
 #      Pojects = models.ForeignKey(projects, on_delete= models.CASCADE)
 #     Project_ID = models.FloatField(models.ForeignKey(projects, on_delete=models.CASCADE))

@@ -24,17 +24,26 @@ def process(request):
         currentid = request.POST['projectid']
         cid = int(currentid)
         print (cid)
+    return render(request, 'CARSProject/process.html',{'total_projects': TP,'currentid':cid})
         
-        
-    return render(request, 'CARSProject/process.html',{'total_projects': TP, 'currentid':cid})
+def annexure(request, pk):
+    update = project.objects.get(project_id=pk)
+    annexureform = annexureForm(instance=update)
+    if request.method == 'POST':
+        annexureform = annexureForm(request.POST, request.FILES,instance=update)
+        if annexureform.is_valid():
+                    annexureform.save()
+                    messages.success(request, 'details added Successfully')    
+                    redirect('/process')
+    return render(request, 'CARSProject/annexure.html',{'total_projects': TP,'annexureform':annexureform})
 def rsqrcommity(request,pk):
     update = project.objects.get(project_id=pk)
     rsqrform = rsqrcommityform(instance=update)
     if request.method == 'POST':
-        rsqrform = rsqrcommityform(request.POST, instance=update)
+        rsqrform = rsqrcommityform(request.POST, request.FILES,instance=update)
         if rsqrform.is_valid():
                     rsqrform.save()
-                    messages.success(request, 'Project Created Successfully')
+                    messages.success(request, 'details added Successfully')
         
     # if request.method == "POST":
     #     rsqrform = rsqrpdf(request.POST, request.FILES)

@@ -23,7 +23,10 @@ class rsqrcommityform(ModelForm):
                   ]
         
         
-        
+class annexureForm(ModelForm):
+    class Meta:
+        model = project
+        fields = ['annexure_1', 'annexure_2']
         
         
         
