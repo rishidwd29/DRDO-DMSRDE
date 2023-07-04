@@ -26,6 +26,8 @@ urlpatterns = [
     path('process/', views.process, name = 'process'),
     path('rsqrcommity/<str:pk>', views.rsqrcommity, name = 'rsqrcommity'),
     path('annexure/<str:pk>', views.annexure, name = 'annexure'),
+    path('installment/<str:pk>', views.installment, name = 'installment'),
+    path('Closer/<str:pk>',views.closer, name = 'closer'),
     
     path('generate/', views.generate, name = 'generate'),
     path('create_project/', views.CreateProject, name = "create_project"),

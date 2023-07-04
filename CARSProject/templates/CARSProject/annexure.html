@@ -3,9 +3,22 @@
 {% block content %}
 <form action="" method = "POST" enctype="multipart/form-data">
     {% csrf_token %}
-    
+    <div class = 'card'>
+        <div class = 'card-body'>
+            <div class="card">
+                <div class="card-header">
+                  <h1>
+                      Annexure Upload
 
-        {{annexureform.as_p}}
+                  </h1>
+                </div>
+            
+            
+            
+            {{annexureform.as_p}}
+        </div>
+    </div>
+
         
     
     <input type="submit" name="Submit" class="btn btn-primary">

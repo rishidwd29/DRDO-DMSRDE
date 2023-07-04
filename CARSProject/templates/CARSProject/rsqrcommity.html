@@ -4,8 +4,21 @@
 <form action="" method = "POST" enctype="multipart/form-data">
     {% csrf_token %}
     
+    <div class = 'card'>
+        <div class = 'card-body'>
+            <div class="card">
+                <div class="card-header">
+                  <h1>
+                      RSQR and Commity Details
 
-        {{rsqrform.as_p}}
+                  </h1>
+                </div>
+            
+            
+                {{rsqrform.as_p}}
+            
+        </div>
+    </div>
         
     
     <input type="submit" name="submit" class="btn btn-primary">

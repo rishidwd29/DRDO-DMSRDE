@@ -25,7 +25,28 @@ def process(request):
         cid = int(currentid)
         print (cid)
     return render(request, 'CARSProject/process.html',{'total_projects': TP,'currentid':cid})
-        
+
+def closer(request,pk):
+    update = project.objects.get(project_id=pk)
+    closerForm = closerform(instance=update)
+    if request.method == 'POST':
+        closerForm = closerform(request.POST, request.FILES,instance=update)
+        if closerForm.is_valid():
+                    closerForm.save()
+                    redirect('/process')
+                    messages.success(request, 'details added Successfully')    
+    return render(request ,'CARSProject/closer.html', {'total_projects':TP,'closerForm':closerForm})
+
+def installment(request, pk):
+    update = project.objects.get(project_id=pk)
+    installmentForm = installmentform(instance=update)
+    if request.method == 'POST':
+        installmentForm = installmentform(request.POST, request.FILES,instance=update)
+        if installmentForm.is_valid():
+                    installmentForm.save()
+                    redirect('/process')
+                    messages.success(request, 'details added Successfully')    
+    return render(request, 'CARSProject/installment.html',{'total_projects':TP,'installmentform':installmentForm})
 def annexure(request, pk):
     update = project.objects.get(project_id=pk)
     annexureform = annexureForm(instance=update)
@@ -33,8 +54,8 @@ def annexure(request, pk):
         annexureform = annexureForm(request.POST, request.FILES,instance=update)
         if annexureform.is_valid():
                     annexureform.save()
-                    messages.success(request, 'details added Successfully')    
                     redirect('/process')
+                    messages.success(request, 'details added Successfully')    
     return render(request, 'CARSProject/annexure.html',{'total_projects': TP,'annexureform':annexureform})
 def rsqrcommity(request,pk):
     update = project.objects.get(project_id=pk)
@@ -113,12 +134,12 @@ def landing(request):
         divisionhead = request.POST['division head']
         buildupprojectid= request.POST['build up projectid']
         CARScoordinator = request.POST['CARS coordinator']
-        totalcost = request.POST['total cost']
+        Estimate_Cost = request.POST['total cost']
         
         carsl1selected = request.POST['carsl1selected']
         addproject = project(project_id = projectid, Title_of_Project = projecttitle, 
             division_head = divisionhead, project_no_buildup = buildupprojectid, 
-            total_cost = totalcost,carscoordinator = CARScoordinator,carsl1selectedinstitutes = carsl1selected )
+            Estimate_Cost = Estimate_Cost,carscoordinator = CARScoordinator,carsl1selectedinstitutes = carsl1selected )
         addproject.save()
     if request.method == "POST":
         update = project.objects.get(project_id = cid)
