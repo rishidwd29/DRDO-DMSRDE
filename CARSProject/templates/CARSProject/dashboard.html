@@ -19,81 +19,103 @@
             </div>
         </div>
         <div class ="card card-body">
-            <a class = "btn btn-primary btn-sm btn-block" href="/create_project">Create New Project                
-            </a>
+            
             <table class="table">
                 <tr>
                     <th></th>
-                    <th>Project Title</th>
-                    <th>division_head</th>
-                    <th>Initial Sanction Cost</th>
-                    <th>Final Cost</th>
-                    <th>Total Expenditure</th>
-                    <th>Project_ID</th>
-                    <th>Date of Start</th>
-                    <th>PDC(months)</th>
-                    <th>RSQR</th>
-                    <th>Nomination RSP</th>
-                    <th>Date of Complition</th>
-                    <th>Extended PDC</th>
-                    <th>No. of Publications</th>
-                    <th>no. of IPR Filed</th>
-                    <th>Trained Manpower</th>
-                    <th>Domain Lab</th>
-                    <th>Cluster *</th>
-                    <th>Scantion Year</th>
-                    <th>Current Status</th>
-                    <th>Date of Closure</th>
+                    <th>Project ID</th>
                     <th>Title of Project</th>
-                    <th>Cost</th>
-                    <th>Porject  no./buildup</th>
-                    <th>Advance date</th>
-                    <th>Advace amount</th>
-                    <th>D.V. no./cheque</th>
-                    <th>Installment 1 </th>
-                    <th>Date</th>
-                    <th>Amount</th>
-                    <th>Cheque slip no.</th>
-                    <th>Installment 2</th>
-                    <th>Date</th>
-                    <th>Amount</th>
-                    <th>Installment 3</th>
-                    <th>Date</th>
-                    <th>Amount</th>
-                    <th>Cheque slip no.</th>
-                    <th>Installment 4</th>
-                    <th>Date</th>
-                    <th>Amount</th>
-                    <th>Cheque slip no.</th>
+                    <th>Division Head</th>
+                    <th>Project No and Buildup id</th>
+                    <th>CARS Coordinator</th>
+                    <th>Estimate Cost</th>
+                    <th>Invited Reasearch Service Provider</th>
+                    <th>CARS L1 Selected Institutes</th>
+                    <th>Initial Santion Cost</th>
+                    <th>Date of Start</th>
+                    <th>Objective</th>
+                    <th>justification</th>
+                    <th>Project Investigator</th>
+                    <th>Duration</th>
+                    <th>Chairman</th>
+                    <th>Member 1</th>
+                    <th>Member 2</th>
+                    <th>Member 3</th>
+                    <th>Member Secretory</th>
+                    <th>Installent Date 1</th>
+                    <th>Installent 1 Amount</th>
+                    <th>Cheque No. 1</th>
+                    <th>Equipment Issued at Installment 1</th>
+                    <th>Installment 1 Expenditure Statement</th>
+                    <th>Installent Date 2</th>
+                    <th>Installent 2 Amount</th>
+                    <th>Cheque No. 2</th>
+                    <th>Equipment Issued at Installment 2</th>
+                    <th>Installment 2 Expenditure Statement</th>
+                    <th>Installent Date 3</th>
+                    <th>Installent 3 Amount</th>
+                    <th>Cheque No. 3</th>
+                    <th>Equipment Issued at Installment 3</th>
+                    <th>Installment 3 Expenditure Statement</th>
+                    <th>Installent Date 4</th>
+                    <th>Installent 4 Amount</th>
+                    <th>Cheque No. 4</th>
+                    <th>Equipment Issued at Installment 4</th>
+                    <th>Installment 4 Expenditure Statement</th>
                     <th>Total Amount Released</th>
-                    <th>Returned amount</th>
-                    <th>DD no. and Date of return of unutilized amount</th>
-                    <th>Total Utilized amount</th>
+                    <th>Date of Complition</th>
+                    <th>Total Utilized Amount</th>
+
+                    
+                    
                 </tr>
-                {% for i in CARSlist %}
+                {% for i in allprojects %}
                 <tr>
                     <td><a class = "btn btn-sm btn-info" href="{% url 'updateproject' i.project_id %}">Update</a></td>
+                    <td>{{i.project_id}}</td>
                     <td>{{i.Title_of_Project}}</td>
                     <td>{{i.division_head}}</td>
+                    <td>{{i.project_no_buildup}}</td>
+                    <td>{{i.carscoordinator}}</td>
+                    <td>{{i.Estimate_Cost}}</td>
+                    <td>{{i.irsp}}</td>
+                    <td>{{i.carsl1selectedinstitutes}}</td>
                     <td>{{i.initial_sanction_cost}}</td>
-                    <td>{{i.final_cost}}</td>
-                    <td>{{i.total_expenditure}}</td>
-                    <td>{{i.project_id}}</td>
                     <td>{{i.date_of_start}}</td>
-                    <td>{{i.pdc}}</td>
-                    <td>{{i.rsqr}}</td>
-                    <td>{{i.nomination_rsp}}</td>
+                    <td>{{i.Objective}}</td>
+                    <td>{{i.justification}}</td>
+                    <td>{{i.project_investigator}}</td>
+                    <td>{{i.duration}}</td>
+                    <td>{{i.chairman}}</td>
+                    <td>{{i.member_1}}</td>
+                    <td>{{i.member_2}}</td>
+                    <td>{{i.member_3}}</td>
+                    <td>{{i.member_secretory}}</td>
+                    <td>{{i.installment_1_date}}</td>
+                    <td>{{i.installment_1_amount}}</td>
+                    <td>{{i.cheque_no_1}}</td>
+                    <td>{{i.Equipment_Issued_at_Installment_1}}</td>
+                    <td>{{i.Installment_1_expenditure_statement}}</td>
+                    <td>{{i.installment_2_date}}</td>
+                    <td>{{i.installment_2_amount}}</td>
+                    <td>{{i.cheque_no_2}}</td>
+                    <td>{{i.Equipment_Issued_at_Installment_2}}</td>
+                    <td>{{i.Installment_2_expenditure_statement}}</td>
+                    <td>{{i.installment_3_date}}</td>
+                    <td>{{i.installment_3_amount}}</td>
+                    <td>{{i.cheque_no_3}}</td>
+                    <td>{{i.Equipment_Issued_at_Installment_3}}</td>
+                    <td>{{i.Installment_3_expenditure_statement}}</td>
+                    <td>{{i.installment_4_date}}</td>
+                    <td>{{i.installment_4_amount}}</td>
+                    <td>{{i.cheque_no_4}}</td>
+                    <td>{{i.Equipment_Issued_at_Installment_4}}</td>
+                    <td>{{i.Installment_4_expenditure_statement}}</td>
+                    <td>{{i.total_amount_released}}</td>
                     <td>{{i.date_of_complition}}</td>
-                    <td>{{i.extended_pdc}}</td>
-                    <td>{{i.no_of_publications}}</td>
-                    <td>{{i.no_of_IPR_Filed}}</td>
-                    <td>{{i.trained_manpower}}</td>
-                    <td>{{i.domain_lab}}</td>
-                    <td>{{i.cluster}}</td>
-                    <td>{{i.scantion_year}}</td>
-                    <td>{{i.current_status}}</td>
-                    <td>{{i.date_of_closure}}</td>
-                    <td>{{i.cost_in_lakh}}</td>
+                    <td>{{i.total_utilized_amount}}</td>
+                    
+                    
                     
                 </tr>
                 {% endfor %}

@@ -4,7 +4,7 @@ from django.db import models
 # Create your models here.
 class project(models.Model):
     # page 1
-    project_id  = models.IntegerField( primary_key=True,)
+    project_id  = models.CharField( max_length = 20,primary_key=True,)
     Title_of_Project = models.CharField(max_length = 500, null = True, blank = True)
     division_head = models.CharField(max_length = 600, null = True, blank = True)
     project_no_buildup = models.CharField(max_length= 400,null = True ,blank=True)

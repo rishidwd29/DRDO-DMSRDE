@@ -7,6 +7,7 @@ from django.http import HttpResponse,FileResponse
 from django.contrib import messages
 from .models import *
 from .forms import *
+from .filters
 import io
 from reportlab.pdfgen import canvas
 from reportlab.lib.units import inch
@@ -22,7 +23,7 @@ def process(request):
     cid = 0 
     if request.method == "POST":
         currentid = request.POST['projectid']
-        cid = int(currentid)
+        cid = str(currentid)
         print (cid)
     return render(request, 'CARSProject/process.html',{'total_projects': TP,'currentid':cid})
 
@@ -154,14 +155,28 @@ def landing(request):
 
 def admin(request):
     return redirect("/admin")
+
+
+
+
+
 def dashboard(request):
-    return render(request, 'CARSProject/Dashboard.html', context )
+    allprojects = project.objects.all()
+    myFilter = ProjectFilter()
+    return render(request, 'CARSProject/Dashboard.html', {'total_projects':TP,'allprojects':allprojects} )
+
+
+
+
+
+
+
     
 def generate(request):
     return render(  request,'CARSProject/generate.html', context)
 
 def projects(request, pk):
-    projects = project.objects.get(project_id=pk)
+     
     return render(request, 'CARSProject/project.html', {'projects': projects,'total_projects': TP })
 
 def CreateProject(request):

@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'CARSProject.apps.CarsprojectConfig',
     'django.forms',
-    # 'django_filter',
+    'django_filters',
 ]
 
 MIDDLEWARE = [

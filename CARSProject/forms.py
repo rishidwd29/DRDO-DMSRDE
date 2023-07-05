@@ -40,6 +40,20 @@ class installmentform(ModelForm):
                   'installment_4_date', 'installment_4_amount','cheque_no_4','Equipment_Issued_at_Installment_4','Installment_4_expenditure_statement',
                   'total_amount_released',
                   ]
+        widgets = {
+            'installment_1_date': DateInput(
+                attrs={'type': 'date', 'placeholder': 'yyyy-mm-dd (DOB)', 'class': 'form-control'}
+            ),
+            'installment_2_date': DateInput(
+                attrs={'type': 'date', 'placeholder': 'yyyy-mm-dd (DOB)', 'class': 'form-control'}
+            ),
+            'installment_3_date': DateInput(
+                attrs={'type': 'date', 'placeholder': 'yyyy-mm-dd (DOB)', 'class': 'form-control'}
+            ),
+            'installment_4_date': DateInput(
+                attrs={'type': 'date', 'placeholder': 'yyyy-mm-dd (DOB)', 'class': 'form-control'}
+            )
+        }
 class closerform(ModelForm):
     class Meta :
         model = project
