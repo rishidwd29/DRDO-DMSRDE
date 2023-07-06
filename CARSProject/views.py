@@ -7,7 +7,7 @@ from django.http import HttpResponse,FileResponse
 from django.contrib import messages
 from .models import *
 from .forms import *
-from .filters
+from .filters import *
 import io
 from reportlab.pdfgen import canvas
 from reportlab.lib.units import inch
@@ -162,8 +162,10 @@ def admin(request):
 
 def dashboard(request):
     allprojects = project.objects.all()
-    myFilter = ProjectFilter()
-    return render(request, 'CARSProject/Dashboard.html', {'total_projects':TP,'allprojects':allprojects} )
+    myFilter = ProjectFilter(request.GET, queryset=allprojects)
+    allprojects = myFilter.qs
+    return render(request, 'CARSProject/Dashboard.html', 
+        {'total_projects':TP,'allprojects':allprojects,'myFilter':myFilter} )
 
 
 
