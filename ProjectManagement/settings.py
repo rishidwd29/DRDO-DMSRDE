@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'django.forms',
     'django_filters',
     'import_export',
+    'bootstrap5',
 ]
 
 MIDDLEWARE = [
