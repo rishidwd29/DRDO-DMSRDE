@@ -155,25 +155,13 @@ def landing(request):
 
 def admin(request):
     return redirect("/admin")
-
-
-
-
-
 def dashboard(request):
     allprojects = project.objects.all()
     myFilter = ProjectFilter(request.GET, queryset=allprojects)
     allprojects = myFilter.qs
     return render(request, 'CARSProject/Dashboard.html', 
         {'total_projects':TP,'allprojects':allprojects,'myFilter':myFilter} )
-
-
-
-
-
-
-
-    
+   
 def generate(request):
     return render(  request,'CARSProject/generate.html', context)
 

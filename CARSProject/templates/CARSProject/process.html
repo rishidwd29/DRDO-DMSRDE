@@ -5,7 +5,7 @@
     {%csrf_token%}
     <label for="division_head"><b>Project ID</b></label>
     <input type="text" class = "form-control" placeholder="Enter Project ID" name="projectid"><br><br>
-    <a class = "btn btn-primary" href="{% url 'rsqrcommity' currentid%}">RQSQR and Commity Details</a>
+    <a class = "btn btn-primary" href="{% url 'rsqrcommity' currentid%}">RSQR and Commitee Details</a>
     <a class = "btn btn-primary" href="{% url 'annexure' currentid %}">Upload Annexures</a>
     <a class = "btn btn-primary" href="{% url 'installment' currentid %}">Installment Entry</a>
     <a class = "btn btn-primary" href="{% url 'closer' currentid %}">Project Closure</a>

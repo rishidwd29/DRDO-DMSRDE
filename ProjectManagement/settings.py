@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'CARSProject.apps.CarsprojectConfig',
     'django.forms',
     'django_filters',
+    'import_export',
 ]
 
 MIDDLEWARE = [
